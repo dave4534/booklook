@@ -12,6 +12,13 @@
 <div class="h2">BookLook <i class="fa fa-eye fa-lg" aria-hidden="true"></i></div>
 </div>
 
+
+<div class="col-xs-6 col-xs-offset-3">
+  <div class="bookAppend">
+    
+  </div>
+</div>
+
   <form>
     <div class="form-group">
       <div class="form-group row">
@@ -53,8 +60,25 @@
 
     </div>
   </form>
-  <script src="node_modules/jquery/dist/jquery.min.js"> </script>
+
+
+ <!-- 1. Begin writing the HTML in a script tag -->
+<script id="booklookTemplate" type="text/x-handlebars-template">
+  <!-- Which element do you want to add? -->
+  <div class="bookObject">
+    <!-- 2. Wherever a dynamic element is needed, add {{ dynamicElement }} -->
+    <div class="bookTime"> {{bookTime}} </div>
+    <div class="bookTitle"> {{bookTitle}} </div>
+    <div class="bookDesc"> {{bookDesc}} </div>
+    <div class="bookAuthor"> {{bookAuthor}} </div>
+    <div class="bookImg"> {{bookImg}} </div>
+   <!--  <span> {{ item }} </span> - <span>{{ price }} Shekels </span> -->
+  </div>
+</script>
+<script src="node_modules/jquery/dist/jquery.min.js"> </script>
   <script src="node_modules/handlebars/dist/handlebars.js"> </script>
-  
+  <script type="text/javascript" src="script.js"></script>
 </body>
 </html>
+
+
