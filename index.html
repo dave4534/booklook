@@ -8,74 +8,77 @@
 </head>
 <body>
 
-<div class="col-xs-6 col-xs-offset-3">
-<div class="h2">BookLook <i class="fa fa-eye fa-lg" aria-hidden="true"></i></div>
-</div>
-
-
-<div class="col-xs-6 col-xs-offset-3">
-  <div class="bookAppend">
-    
+  <div class="col-xs-6 col-xs-offset-3">
+    <div class="h2">BookLook <i class="fa fa-eye fa-lg" aria-hidden="true"></i></div>
   </div>
-</div>
 
-  <form>
-    <div class="form-group">
-      <div class="form-group row">
-        <div class="col-xs-6 col-xs-offset-3">
-          <label class="col-form-label h3">Enter Book Info</label>
-          <input class="form-control" type="attribute" placeholder="Book Title">
-        </div>
-      </div>
-      <div class="form-group row">
-        <div class="col-xs-6 col-xs-offset-3">
-          <input class="form-control" type="attribute" placeholder="Book Author">
-        </div>
-      </div>
-      <div class="form-group row">
-        <div class="col-xs-6 col-xs-offset-3">
-          <input class="form-control" type="attribute" placeholder="Book Description">
-        </div>
-      </div>
-      <div class="form-group row">
-        <div class="col-xs-6 col-xs-offset-3">
-          <input class="form-control" type="attribute" placeholder="Image URL">
-        </div>
-      </div>
-      <div class="form-group row">
-        <div class="col-xs-6 col-xs-offset-3">
-          <input class="form-control" type="attribute" placeholder="Number of Pages">
-        </div>
-      </div>
-      <div class="form-group row">
-        <div class="col-xs-6 col-xs-offset-3">
-          <input class="form-control" type="attribute" placeholder="Minutes You Read Per Day">
-        </div>
-      </div>
-      <div class="form-group row">
-        <div class="col-xs-6 col-xs-offset-3">
-          <button class="btn btn-primary">Search</button>
-        </div>
-      </div>
 
+  <div class="col-xs-6 col-xs-offset-3">
+
+  </div>
+
+  <!-- 1. Begin writing the HTML in a script tag -->
+  <script id="booklookTemplate" type="text/x-handlebars-template">
+
+    <!-- <div class="bookAppend"></div> -->
+
+    <div class="bookLib">
+      <!-- 2. Wherever a dynamic element is needed, add {{ dynamicElement }} -->
+      <div class="bookTitle">{{bookTitle}}</div>
+      <div class="bookDesc"> {{bookDesc}} </div>
+      <div class="bookAuthor"> {{bookAuthor}} </div>
+      <div class="bookImg"> {{bookImg}} </div>
+      <div class="numberPages"> {{numberPages}} </div>
+      <div class="dailyMinutesRead"> {{dailyMinutesRead}} </div>
     </div>
-  </form>
+ </script>
 
+ <div class="books col-xs-6 col-xs-offset-3"></div>
 
- <!-- 1. Begin writing the HTML in a script tag -->
-<script id="booklookTemplate" type="text/x-handlebars-template">
-  <!-- Which element do you want to add? -->
-  <div class="bookObject">
-    <!-- 2. Wherever a dynamic element is needed, add {{ dynamicElement }} -->
-    <div class="bookTime"> {{bookTime}} </div>
-    <div class="bookTitle"> {{bookTitle}} </div>
-    <div class="bookDesc"> {{bookDesc}} </div>
-    <div class="bookAuthor"> {{bookAuthor}} </div>
-    <div class="bookImg"> {{bookImg}} </div>
-   <!--  <span> {{ item }} </span> - <span>{{ price }} Shekels </span> -->
-  </div>
-</script>
-<script src="node_modules/jquery/dist/jquery.min.js"> </script>
+    <form>
+      <div class="form-group">
+        <div class="form-group row">
+          <div class="col-xs-6 col-xs-offset-3">
+            <label class="col-form-label h3">Enter Book Info</label>
+            <input class="form-control bookTitleInput" type="attribute" placeholder="Book Title">
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-xs-6 col-xs-offset-3">
+            <input class="form-control" type="attribute" placeholder="Book Author">
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-xs-6 col-xs-offset-3">
+            <input class="form-control" type="attribute" placeholder="Book Description">
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-xs-6 col-xs-offset-3">
+            <input class="form-control" type="attribute" placeholder="Image URL">
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-xs-6 col-xs-offset-3">
+            <input class="form-control" type="attribute" placeholder="Number of Pages">
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-xs-6 col-xs-offset-3">
+            <input class="form-control" type="attribute" placeholder="Minutes You Read Per Day">
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-xs-6 col-xs-offset-3">
+            <button id="search" class="btn btn-primary">Search</button>
+          </div>
+        </div>
+
+      </div>
+    </form>
+
+ 
+  <script src="node_modules/jquery/dist/jquery.min.js"> </script>
   <script src="node_modules/handlebars/dist/handlebars.js"> </script>
   <script type="text/javascript" src="script.js"></script>
 </body>
