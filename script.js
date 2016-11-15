@@ -1,61 +1,63 @@
-
-var bookArray = [
-// please assume a user reads 1 page per minute
-  {
-  bookTitle: "Hero", 
-  bookDesc: "This is a great book",
-  bookAuthor: "John Smith",
-  bookImg: "url: www.google.com",
-  numberPages: 300,
-  dailyMinutesRead: 45
-  },
-  {
-  bookTitle: "Hero2", 
-  bookDesc: "This is a great book",
-  bookAuthor: "John Smith",
-  bookImg: "url: www.google.com",
-  numberPages: 300,
-  dailyMinutesRead: 45
-  },
-  {
-  bookTitle: "Hero3", 
-  bookDesc: "This is a great book",
-  bookAuthor: "John Smith",
-  bookImg: "url: www.google.com",
-  numberPages: 300,
-  dailyMinutesRead: 45
-  }
-];
+$(document).ready();
 
 
-// // 3. Select the script by ID, and with .html return the inner HTML
-// var source = $('#booklookTemplate').html();
+// var bookArray = [
+// // please assume a user reads 1 page per minute
+//   {
+//   bookTitle: "Hero", 
+//   bookDesc: "This is a great book",
+//   bookAuthor: "John Smith",
+//   bookImg: "url: www.google.com",
+//   numberPages: 300,
+//   dailyMinutesRead: 45
+//   },
+//   {
+//   bookTitle: "Hero2", 
+//   bookDesc: "This is a great book",
+//   bookAuthor: "John Smith",
+//   bookImg: "url: www.google.com",
+//   numberPages: 300,
+//   dailyMinutesRead: 45
+//   },
+//   {
+//   bookTitle: "Hero3", 
+//   bookDesc: "This is a great book",
+//   bookAuthor: "John Smith",
+//   bookImg: "url: www.google.com",
+//   numberPages: 300,
+//   dailyMinutesRead: 45
+//   }
+// ];
 
-// // 4. compile our template to js html using handlebars
-// var template = Handlebars.compile(source);
+// renderAllData(bookArray);
+var fetch = function () {
+  $.ajax({
+    method: "GET",
+    url: 'https://www.googleapis.com/books/v1/volumes?q=isbn:0439023521',
+    dataType: "json",
+    success: function(data) {
+    alert('data');
 
-// // 5. Fill our template (the compiled code) 
-// var newHTML = template(bookArray);
-
-// // 6. Append our compiled html to the page
-// $('.bookAppend').append(newHTML);
-
-// take data convert it to html and append it
-
-
-
-var renderAllData = function (data) {
-  for (var i = 0; i < data.length; i += 1) {
-    var source = $('#booklookTemplate').html();
-    var template = Handlebars.compile(source);
-    var newHTML = template(data[i]);
-    var input = $('bookTitle').val();
-    if (input === newHTML){
-      $('.books').append(newHTML);
+    },
+    error: function(jqXHR, textStatus, errorThrown) {
+      console.log('ERROR');
     }
-  }
+  }); 
 };
 
-renderAllData(bookArray);
+$('#search').on("click", function(){
+  fetch();
 
+});
 
+var readTime = Math.ceil(data.items["0"].volumeInfo.pageCount /60);
+
+var dataObj = {
+  books: [
+    {pages: readTime},
+    {title: data.items["0"].volumeInfo.title},
+    {description: data.items["0"].volumeInfo.description},
+    {author: data.items["0"].volumeInfo.authors["0"]},
+    {image: data.items["0"].volumeInfo.imageLinks.smallThumbnail}
+  ]
+};
